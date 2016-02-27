@@ -19,8 +19,8 @@
     </style>
 
     <style name="PopupTheme" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:textColorPrimary">#9E9E9E</item> <!-- Text color of Overflow menu -->
-        <item name="android:background">#fffcfff6</item>     <!-- Background of Overflow menu -->
+        <item name="android:textColorPrimary">@color/grey_500</item> <!-- Text color of Overflow menu -->
+        <item name="android:background">@color/overflowMenuBg</item> <!-- Background of Overflow menu -->
     </style>
 
 </resources>

@@ -2,9 +2,15 @@ package com.example.applytheme;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.example.applytheme.adapter.RecyclerAdapter;
+import com.example.applytheme.model.Landscape;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("Welcome!");
         toolbar.setSubtitle("Folks!");
 
+        setUpToolbarMenu();
+        setUpRecyclerView();
+    }
+
+    private void setUpToolbarMenu() {
         toolbar.inflateMenu(R.menu.menu_main);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -54,5 +65,18 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    private void setUpRecyclerView() {
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerAdapter adapter = new RecyclerAdapter(this, Landscape.getData());
+        recyclerView.setAdapter(adapter);
+
+        LinearLayoutManager mLinearLayoutManagerVertical = new LinearLayoutManager(this);
+        mLinearLayoutManagerVertical.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(mLinearLayoutManagerVertical);
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 }
